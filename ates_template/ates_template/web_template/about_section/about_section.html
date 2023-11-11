@@ -1,0 +1,18 @@
+<div class="about_section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="about_content">
+            <h1>{{ _(title) }}</h1>
+            {{ harpiya.utils.md_to_html(_(description)) }}
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="about_thumb">
+          <img src="{{ image }}" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

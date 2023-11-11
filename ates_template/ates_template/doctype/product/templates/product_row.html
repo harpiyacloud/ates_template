@@ -1,0 +1,13 @@
+<div class="col-lg-4 col-md-4 col-12 ">
+    <div class="single_product">
+        <div class="product_thumb">
+            <a class="primary_img" href="/{{ doc.route }}"><img src="{{ doc.product_image }}" alt=""></a>
+            {% if doc.product_image_2 %}
+            <a class="secondary_img" href="/{{ doc.route }}"><img src="{{ doc.product_image_2 }}" alt=""></a>
+            {% endif %}
+        </div>
+        <div class="product_content grid_content">
+            <h3><a href="/{{ doc.route }}">{{ _(doc.name) }}</a></h3>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,256 @@
+{% macro render_item(item, submenu=False, parent=False) %}
+{% if item.child_items %}
+{% if parent %}
+{%- set dropdown_id = 'id-' + harpiya.utils.generate_hash(length=12) -%}
+<li>
+	<a href="#" id="{{ dropdown_id }}">
+		{{ _(item.label) }} <i class="fa fa-angle-down"></i>
+	</a>
+  	<ul class="sub_menu pages" aria-labelledby="{{ dropdown_id }}">
+		{% for child in item.child_items %}
+			{{ render_item(child, True) }}
+	  {% endfor %}
+	</ul>
+</li>
+{% else %}
+{%- set dropdown_id = 'id-' + harpiya.utils.generate_hash(length=12) -%}
+<li>
+	<a href="#" id="{{ dropdown_id }}">
+		{{ _(item.label) }}  <i class="fa fa-angle-down"></i>
+	</a>
+	<ul class="sub_menu pages" aria-labelledby="{{ dropdown_id }}">
+		{% for child in item.child_items %}
+			{{ render_item(child, True) }}
+	{% endfor %}
+	</ul>
+</li>
+{% endif %}
+
+{% else %}
+
+{% set url = item.url or '' %}
+{% set url = url if url.startswith('#') else url | abs_url %}
+
+{% if parent %}
+<li>
+	<a href="{{ url }}"
+		{% if item.open_in_new_tab %} target="_blank" {% endif %}>
+		{{ _(item.label) }}
+	</a>
+</li>
+{% else %}
+<li>
+	<a class="sub_menu pages" href="{{ url }}"
+	{% if item.open_in_new_tab %} target="_blank" {% endif %}>
+	{{ _(item.label) }}
+</a>
+</li>
+{% endif %}
+{% endif %}
+{% endmacro %}
+
+{% macro render_item_mobile(item, submenu=False, parent=False) %}
+{% if item.child_items %}
+{% if parent %}
+{%- set dropdown_id = 'id-' + harpiya.utils.generate_hash(length=12) -%}
+<li class="menu-item-has-children">
+	<a href="#" id="{{ dropdown_id }}">
+		{{ _(item.label) }}
+	</a>
+  	<ul class="sub-menu">
+		{% for child in item.child_items %}
+			{{ render_item_mobile(child, True) }}
+	  {% endfor %}
+	</ul>
+</li>
+{% else %}
+{%- set dropdown_id = 'id-' + harpiya.utils.generate_hash(length=12) -%}
+<li class="menu-item-has-children">
+	<a href="#">
+		{{ _(item.label) }}
+	</a>
+	<ul class="sub-menu">
+		{% for child in item.child_items %}
+			{{ render_item_mobile(child, True) }}
+		{% endfor %}
+	</ul>
+</li>
+{% endif %}
+
+{% else %}
+
+{% set url = item.url or '' %}
+{% set url = url if url.startswith('#') else url | abs_url %}
+
+{% if parent %}
+<li class="menu-item-has-children">
+	<a href="{{ url }}"
+		{% if item.open_in_new_tab %} target="_blank" {% endif %}>
+		{{ _(item.label) }}
+	</a>
+</li>
+{% else %}
+<li>
+	<a  href="{{ url }}"
+		{% if item.open_in_new_tab %} target="_blank" {% endif %}>
+		{{ _(item.label) }}
+	</a>
+</li>
+
+{% endif %}
+
+{% endif %}
+{% endmacro %}
+<div class="offcanvas_menu">
+	<div class="canvas_open">
+					<a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+				</div>
+	<div class="offcanvas_menu_wrapper">
+					<div class="canvas_close">
+						  <a href="javascript:void(0)"><i class="ion-android-close"></i></a>  
+					</div>
+
+					<div id="menu" class="text-left ">
+						<ul class="offcanvas_main_menu">
+							{%- for item in top_bar_items -%}
+								{% if not item.parent_label -%}
+									{{ render_item_mobile(item, parent=True) }}
+								{%- endif -%}
+							{%- endfor %}
+						</ul>
+					</div>
+					<div class="offcanvas_footer">
+						<span><a href="mailto:info@atesknitwear.com"><i class="fa fa-envelope-o"></i> info@atesknitwear.com</a></span>
+						<ul>
+							<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+							<li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+</div>
+<!--Offcanvas menu area end-->
+
+<!--header area start-->
+<header class="header_area header_three">
+	<!--header top start-->
+	<div class="header_top">
+		<div class="container-fluid">   
+			<div class="row align-items-center">
+				<div class="col-lg-10 col-md-12">
+					<div class="welcome_text">
+					   <ul>
+							<li><span>{{ _('Fabrika:') }}</span> Fatih Cad. Uzun Sok. Gülen Han 21/1-2-3, İstanbul</li>
+							<li><span>{{ _('Mağaza:') }}</span> Keresteciler Sit. Savaş Cad. Silsüpür İşhanı No:41 D: 2 Merter - Güngören/İstanbul</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-12">
+					<div class="top-right text-right">
+						<div class="language form-group mb-0 hide" id="language-switcher">
+							<select class="form-control"></select>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--header top start-->
+
+	<!--header middel start-->
+
+	<div class="header_middel">
+		<div class="container-fluid">
+			<div class="middel_inner">
+				<div class="row align-items-center">
+
+					<div class="col-lg-4 col-md-4">
+						<div class="logo">
+							<a href="{{ url_prefix }}{{ home_page or "/" }}">
+								{%- if brand_html -%}
+									{{ brand_html }}
+								{%- elif banner_image -%}
+									<img src='{{ banner_image }}' width="80px">
+								{%- else -%}
+									<span>{{ (harpiya.get_hooks("brand_html") or [_("Home")])[0] }}</span>
+								{%- endif -%}
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="horizontal_menu">
+				
+				<div class="left_menu">
+					<div class="main_menu"> 
+						<nav>  
+							<ul>
+								{%- for item in top_bar_items -%}
+									{% if not item.parent_label and not item.right -%}
+										{{ render_item(item, parent=True) }}
+									{%- endif -%}
+								{%- endfor %}
+							</ul> 
+							
+						</nav> 
+					</div>
+				</div>
+				<div class="logo_container">
+					<a href="{{ url_prefix }}{{ home_page or "/" }}">
+						{%- if brand_html -%}
+							{{ brand_html }}
+						{%- elif banner_image -%}
+							<img src='{{ banner_image }}'>
+						{%- else -%}
+							<span>{{ (harpiya.get_hooks("brand_html") or [_("Home")])[0] }}</span>
+						{%- endif -%}
+					</a>
+				</div>
+				<div class="right_menu">
+					<div class="main_menu"> 
+						<nav>  
+							<ul>
+								{%- for item in top_bar_items -%}
+									{% if not item.parent_label and item.right -%}
+										{{ render_item(item, parent=True) }}
+									{%- endif -%}
+								{%- endfor %}
+							</ul> 
+						</nav> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--header middel end-->
+
+	
+	<!--header bottom satrt-->
+	<div class="header_bottom sticky-header">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-12">
+					<div class="main_menu_inner">
+						<div class="main_menu"> 
+							<nav>  
+								<ul>
+									{%- for item in top_bar_items -%}
+										{% if not item.parent_label -%}
+											{{ render_item(item, parent=True) }}
+										{%- endif -%}
+									{%- endfor %}
+								</ul>   
+							</nav> 
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--header bottom end-->
+</header>
+<!--header area end-->

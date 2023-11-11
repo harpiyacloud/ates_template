@@ -1,0 +1,80 @@
+{
+ "__unsaved": 1,
+ "creation": "2023-11-12 00:19:30.665903",
+ "docstatus": 0,
+ "doctype": "Web Template",
+ "fields": [
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_1",
+   "fieldtype": "Section Break",
+   "label": "Banner 1",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_image_1",
+   "fieldtype": "Attach Image",
+   "label": "Banner Image",
+   "reqd": 1
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_url_1",
+   "fieldtype": "Data",
+   "label": "Banner URL",
+   "reqd": 1
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_2",
+   "fieldtype": "Section Break",
+   "label": "Banner 2",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_image_2",
+   "fieldtype": "Attach Image",
+   "label": "Banner Image",
+   "reqd": 1
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_url_2",
+   "fieldtype": "Data",
+   "label": "Banner URL",
+   "reqd": 1
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_3",
+   "fieldtype": "Section Break",
+   "label": "Banner 3",
+   "reqd": 0
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_image_3",
+   "fieldtype": "Attach Image",
+   "label": "Banner Image",
+   "reqd": 1
+  },
+  {
+   "__unsaved": 1,
+   "fieldname": "banner_url_3",
+   "fieldtype": "Data",
+   "label": "Banner URL",
+   "reqd": 1
+  }
+ ],
+ "idx": 0,
+ "modified": "2023-11-12 00:20:44.517089",
+ "modified_by": "Administrator",
+ "module": "Ates Template",
+ "name": "Three Banner Box",
+ "owner": "Administrator",
+ "standard": 1,
+ "template": "",
+ "type": "Section"
+}

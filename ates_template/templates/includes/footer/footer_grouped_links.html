@@ -1,0 +1,31 @@
+{% for group in footer_items if group.child_items %}
+{# 2 columns to every 5 links, so 5 links get 2 columns, 5-10 links get 4 columns, and so on #}
+{%- set cols = harpiya.utils.ceil((group.child_items | len) / 5) * 2 -%}
+<div class="col-lg-{{ cols }} col-md-6 col-sm-6 col-6">
+	<div class="widgets_container">
+		<h3>
+			{%- if group.icon -%}
+			<img src="{{ group.icon }}" alt="{{ group.label }}">
+			{%- else -%}
+			{{ group.label }}
+			{%- endif -%}
+		</h3>
+	  <div class="footer_menu">
+		<ul>
+			{%- for child in group.child_items -%}
+			<li data-label="{{ child.label }}">
+				<a href="{{ child.url | abs_url }}"
+					{% if child.open_in_new_tab %} target="_blank" {% endif %}  rel="noreferrer">
+					{%- if child.icon -%}
+					<img src="{{ child.icon }}" alt="{{ child.label }}">
+					{%- else -%}
+					{{ child.label }}
+					{%- endif -%}
+				</a>
+			</li>
+			{%- endfor -%}
+		</ul>
+	  </div>
+	</div>
+  </div>
+{% endfor %}

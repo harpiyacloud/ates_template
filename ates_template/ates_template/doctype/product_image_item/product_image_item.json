@@ -1,0 +1,37 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-11-11 15:14:46.119510",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "image_title",
+  "image"
+ ],
+ "fields": [
+  {
+   "fieldname": "image_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ad\u0131"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach",
+   "label": "Resim"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-11 15:15:49.808197",
+ "modified_by": "Administrator",
+ "module": "Ates Template",
+ "name": "Product Image Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,9 @@
+{% if navbar_search %}
+	<li>
+		<form action='/search'>
+		<input name='q' class='form-control navbar-search' type='text'
+			value='{{ harpiya.form_dict.q|e if harpiya.form_dict.q else ''}}'
+			{% if not harpiya.form_dict.q %}placeholder="{{ _("Search...") }}"{% endif %}>
+		</form>
+	</li>
+{% endif %}

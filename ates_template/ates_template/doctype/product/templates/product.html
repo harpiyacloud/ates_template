@@ -1,0 +1,96 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ title or _("Ürünler") }}{% endblock %}
+
+
+{% block page_content %}
+    <!--product details start-->
+    <div class="product_details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-7">
+                   <div class="product-details-tab">
+                        {% if images or product_image %}
+                            {% if images and images|length > 0 %}
+                                {% for image in images[0:1] %}
+                                    {%- set res = harpiya.utils.get_thumbnail_base64_for_image(image.image) if image.image else false -%}
+                                    <div id="img-1" class="zoomWrapper single-zoom">
+                                        <a href="#">
+                                            <img id="zoom1" src="{{ image.image }}" data-zoom-image="{{ image.image }}" alt="{{ doc.name }}">
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                                
+                                <div class="single-zoom-thumb">
+                                    <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                                        {% for image_th in images %}
+                                        <li>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ image_th.image }}" data-zoom-image="{{ image_th.image }}">
+                                                <img src="{{ image_th.image }}" alt="zo-th-1"/>
+                                            </a>
+        
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                
+                            {% else  %}
+                                {%- set res = harpiya.utils.get_thumbnail_base64_for_image(product_image) if product_image else false -%}
+                                <div data-thumb="{{ product_image }}">
+                                    <a href="{{ product_image }}">
+                                        <img src="{{ product_image }}" alt="img" data-caption="" data-src="{{ product_image }}" data-large_image="{{ product_image }}" data-large_image_width="{{ res['width'] }}" data-large_image_height="{{ res['height'] }}">
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                                <div data-thumb="/assets/atesğ/images/no-image.svg">
+                                    <a href="/assets/ates_template/images/no-image.svg">
+                                        <img src="/assets/ates_template/images/no-image.svg" alt="img" data-caption="" data-src="/assets/ates_template/images/no-image.svg" data-large_image="/assets/ates_template/images/no-image.svg" data-large_image_width="621" data-large_image_height="621">
+                                    </a>
+                                </div>
+                        {% endif %}                    
+
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5">
+                    <div class="product_d_right">
+
+                           
+                            <h1>{{ _(title) }}</h1>
+
+                            {{ _(content) }} 
+
+                            {% if variant_images%}
+                            <div class="product_variant color">
+                                
+                                <div class="row">
+                                    <h3>Renkler</h3>
+                                    {% for image in variant_images %}
+                                    {%- set res = harpiya.utils.get_thumbnail_base64_for_image(image.image) if image.image else false -%}
+                                    <div class="col-md-3 mb-2">
+                                        <img src="{{ image.image }}"/>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="priduct_social">
+                            <h3>Paylaş:</h3>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>           
+                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>           
+                                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>           
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>        
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>        
+                            </ul>      
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <!--product details end-->
+{% endblock %}
+

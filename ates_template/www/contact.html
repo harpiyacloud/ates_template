@@ -1,0 +1,127 @@
+{% extends "templates/web.html" %}
+
+{% set title = heading or _("İletişim") %}
+
+{% block page_content %}
+    <!--contact area start-->
+    <div class="contact_area">
+        <div class="container">   
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                   <div class="contact_message content" itemscope itemtype="http://schema.org/PostalAddress">
+                        <h3>{{ _("İletişim Bilgileri") }}</h3>    
+                        <ul>
+                            {% if address_line1 %}
+                                <li><i class="fa fa-fax"></i> {% if address_title %}<b>{{ _(address_title) }}: </b>{% endif %} <span itemprop="streetAddress">{{ address_line1 }}</span><br>
+                            {% endif %}
+                            {% if address_line2 %}
+                                <span itemprop="streetAddress"> {{ address_line2 }}</span>
+                            {% endif %}
+                            {% if state %}
+                                <span itemprop="addressRegion"> {{ state }} / </span>
+                            {% endif %}
+                            {% if city %}
+                                <span itemprop="addressLocality"> {{ city }} - </span>
+                            {% endif %}
+                            
+                            {% if pincode %}
+                                <span itemprop="postalCode"> {{ pincode }}</span>
+                            {% endif %}
+                            {% if country %}
+                                <span itemprop="addressCountry"> {{ country }}</span></li>
+                            {% endif %}
+                            {% if phone %}
+                                <li><i class='fa fa-phone'></i> <span itemprop="telephone">{{ phone }}</span></li>
+                            {% endif %}
+                            {% if email_id %}
+                                <li><i class="fa fa-envelope-o"></i>
+                                <span itemprop="email">
+                                    <a href="mailto:{{ email_id }}">{{ email_id }}</a>
+                                </span></li>
+                            {% endif %}
+                            {% if skype %}
+                                <li><i class='fa fa-skype'></i> <span itemprop="email">{{ skype }}</span></li>
+                            {% endif %}
+                        </ul>
+                        <ul>
+                            {% if address_line1_2 %}
+                                <li><i class="fa fa-fax"></i> {% if address_title_2 %}<b>{{ _(address_title_2) }}: </b>{% endif %} <span itemprop="streetAddress">{{ address_line1_2 }}</span><br>
+                            {% endif %}
+                            {% if address_line2_2 %}
+                                <span itemprop="streetAddress"> {{ address_line2_2 }}</span>
+                            {% endif %}
+                            {% if state_2 %}
+                                <span itemprop="addressRegion"> {{ state_2 }} / </span>
+                            {% endif %}
+                            {% if city_2 %}
+                                <span itemprop="addressLocality"> {{ city_2 }} - </span>
+                            {% endif %}
+                            
+                            {% if pincode_2 %}
+                                <span itemprop="postalCode"> {{ pincode_2 }}</span>
+                            {% endif %}
+                            {% if country_2 %}
+                                <span itemprop="addressCountry"> {{ country_2 }}</span></li>
+                            {% endif %}
+                            {% if phone_2 %}
+                                <li><i class='fa fa-phone'></i> <span itemprop="telephone">{{ phone_2 }}</span></li>
+                            {% endif %}
+                            {% if email_id_2 %}
+                                <li><i class="fa fa-envelope-o"></i>
+                                <span itemprop="email">
+                                    <a href="mailto:{{ email_id_2 }}">{{ email_id_2 }}</a>
+                                </span></li>
+                            {% endif %}
+
+                        </ul>            
+                    </div> 
+                </div>
+                <div class="col-lg-6 col-md-12">
+                   <div class="contact_message form">
+                        <h3>{{ _("İletişim Formu") }}</h3>   
+
+                            <p>  
+                               <label>  {{ _("Adınız Soyadınız (gerekli)") }}</label>
+                                <input name="name" placeholder="{{ _("Adınız Soyadınız  *") }}" type="text"> 
+                            </p>
+                            <p>       
+                               <label>  {{ _("E-posta Adresiniz (gerekli)") }}</label>
+                                <input name="email" placeholder="{{ _("E-posta *") }}" type="email">
+                            </p>
+                            <p>          
+                               <label>  {{ _("Konu") }}</label>
+                                <input name="subject" placeholder="{{ _("Konu") }} *" type="text">
+                            </p>    
+                            <div class="contact_textarea">
+                                <label>  {{ _("Mesajınız") }}</label>
+                                <textarea placeholder="{{ _("Mesajınız") }} *" name="message"  class="form-control2" ></textarea>     
+                            </div>   
+                            <button type="submit" class="btn-send"> {{ _("Gönder") }}</button>  
+                            <p class="form-messege"></p>
+
+
+                    </div> 
+                </div>
+            </div>
+        </div>    
+    </div>
+    {% if map_1 %}
+     <!--contact map start-->
+     <div class="contact_map">
+        <div class="container-fluid">
+             <div class="row">
+                 <div class="col-12">
+                    <div class="map-area">
+                        {{ map_1 }}
+                    </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     {% endif %}
+     <!--contact map end-->
+
+<script>
+	{% include "templates/includes/contact.js" %}
+</script>
+{% endblock %}

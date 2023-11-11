@@ -1,0 +1,97 @@
+<!--footer area start-->
+<footer class="footer_widgets">
+  <div class="footer_top">
+    <div class="container">
+      <div class="row">
+        {% if footer_items -%} 
+          {% include "templates/includes/footer/footer_grouped_links.html" %} 
+        {% endif %} 
+        <div class="col-lg-4 col-md-6">
+          <div class="widgets_container contact_us">
+            <h3>İletişim</h3>
+            {% include "templates/includes/footer/footer_info.html" %}
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="widgets_container newsletter">
+            <h3>{{ _('Haber Bülteni') }}</h3>
+            <div class="newleter-content">
+              <p>
+                {{ _('Haber bültenimize abone olarak yeni çıkan ürünlerimizden ve fırsatlardan ilk siz haberdar olabilirsiniz.') }}
+              </p>
+              <div class="subscribe_form">
+                <form action="#" class="footer-newsletter">
+                  <input
+                    name="email" 
+                    id="footer-subscribe-email" 
+                    type="email"
+                    autocomplete="off"
+                    placeholder="E-posta Adresiniz..."
+                  />
+                  <button id="footer-subscribe-button">{{ _('Abone Ol !') }}</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer_bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <div class="copyright_area">
+            {% block powered %}
+            {%- if footer_powered -%}
+              {{ footer_powered }}
+            {%- else -%}
+              {% include "templates/includes/footer/footer_powered.html" %}
+            {%- endif -%}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--footer area end-->
+
+<script>
+  if(!window.cagtek) window.cagtek = {};
+  cagtek.subscribe_to_newsletter = function(opts, btn) {
+    return harpiya.call({
+      type: "POST",
+      method: "harpiya.email.doctype.newsletter.newsletter.subscribe",
+      btn: btn,
+      args: {"email": opts.email},
+      callback: opts.callback
+    });
+  }
+  
+  harpiya.ready(function() {
+    $("#footer-subscribe-button").click(function() {
+  
+      if($("#footer-subscribe-email").val() && validate_email($("#footer-subscribe-email").val())) {
+        $("#footer-subscribe-email").attr('disabled', true);
+        $("#footer-subscribe-button").html(__("Gönderiliyor"))
+          .attr("disabled", true);
+        cagtek.subscribe_to_newsletter({
+          email: $("#footer-subscribe-email").val(),
+          callback: function(r) {
+            if(!r.exc) {
+              $("#footer-subscribe-button").html(__("Eklendi"))
+                .attr("disabled", true);
+            } else {
+              $("#footer-subscribe-button").html(__("Hata: Geçerli bir kimlik değil mi?"))
+                .addClass("btn-danger").attr("disabled", false);
+              $("#footer-subscribe-email").val("").attr('disabled', false);
+            }
+          }
+        });
+      }
+      else
+        harpiya.msgprint(harpiya._("Lütfen geçerli bir e-posta adresi girin"))
+    });
+  });
+  </script>

@@ -1,0 +1,149 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_rename": 1,
+ "creation": "2023-11-11 14:59:47.502202",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "detaylar_tab",
+  "title",
+  "product_categories",
+  "route",
+  "column_break_nwge",
+  "published",
+  "product_image",
+  "product_image_2",
+  "section_break_vzrt",
+  "content",
+  "\u00fcr\u00fcn_resimleri_tab",
+  "images",
+  "varyant_resimleri_tab",
+  "variant_images"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Ba\u015fl\u0131k",
+   "no_copy": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "product_categories",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u00dcr\u00fcn Kategorisi",
+   "options": "Product Categories",
+   "reqd": 1
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Y\u00f6nlendirme",
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_nwge",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "published",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Yay\u0131nland\u0131"
+  },
+  {
+   "fieldname": "section_break_vzrt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "content",
+   "fieldtype": "Text Editor",
+   "ignore_xss_filter": 1,
+   "in_global_search": 1,
+   "label": "A\u00e7\u0131klama"
+  },
+  {
+   "fieldname": "detaylar_tab",
+   "fieldtype": "Tab Break",
+   "label": "Detaylar"
+  },
+  {
+   "fieldname": "product_image",
+   "fieldtype": "Attach Image",
+   "label": "\u00dcr\u00fcn Resmi",
+   "reqd": 1
+  },
+  {
+   "fieldname": "\u00fcr\u00fcn_resimleri_tab",
+   "fieldtype": "Tab Break",
+   "label": "\u00dcr\u00fcn Resimleri"
+  },
+  {
+   "fieldname": "images",
+   "fieldtype": "Table",
+   "label": "Resimler",
+   "options": "Product Image Item"
+  },
+  {
+   "fieldname": "varyant_resimleri_tab",
+   "fieldtype": "Tab Break",
+   "label": "Varyant Resimleri"
+  },
+  {
+   "fieldname": "variant_images",
+   "fieldtype": "Table",
+   "label": "Varyant Resimleri",
+   "options": "Product Image Item"
+  },
+  {
+   "fieldname": "product_image_2",
+   "fieldtype": "Attach Image",
+   "label": "Resim 2"
+  }
+ ],
+ "has_web_view": 1,
+ "image_field": "product_image",
+ "index_web_pages_for_search": 1,
+ "is_published_field": "published",
+ "links": [],
+ "modified": "2023-11-12 01:07:11.340777",
+ "modified_by": "Administrator",
+ "module": "Ates Template",
+ "name": "Product",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Website Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "route": "products",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -4,6 +4,18 @@ app_publisher = "Harpiya Software Technologies, LLC"
 app_description = "Template for Ates Triko"
 app_email = "info@harpiya.com"
 app_license = "mit"
+
+
+website_route_rules = [
+	{"from_route": "/products/<category>", "to_route": "Product"},
+]
+
+global_search_doctypes = {
+	"Default": [
+		{"doctype": "Product"},
+	]
+}
+
 # required_apps = []
 
 # Includes in <head>
